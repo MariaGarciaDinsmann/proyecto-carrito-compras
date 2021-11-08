@@ -13,7 +13,7 @@ export default function CartWidget() {
             aria-label="Tenés 4 productos en el carrito"
             color="inherit"
         >
-            <Badge badgeContent={4} color="info">
+            <Badge badgeContent={4} color="secondary">
                 <ShoppingCartIcon style={{ fontSize: 30 }} />
             </Badge>
         </IconButton>

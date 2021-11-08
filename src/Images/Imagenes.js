@@ -3,10 +3,11 @@ import zapatillas02 from '../Images/zapatillas02.jpg';
 import zapatillas03 from '../Images/zapatillas03.jpg';
 import zapatillas04 from '../Images/zapatillas04.jpg';
 
-export default [
+const imagenes = [
     zapatillas01,
     zapatillas02,
     zapatillas03,
     zapatillas04
-]
+];
 
+export default imagenes;

@@ -1,28 +1,32 @@
 import './App.css';
-import NavBar from './Components/NavBar.jsx'
-import ItemListContainer from './Components/ItemListContainer.jsx'
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import NavBar from './Components/NavBar.jsx';
+import ItemListContainer from './Components/ItemListContainer.jsx';
+import { createMuiTheme}  from '@mui/material';
+import { teal, pink } from '@mui/material/colors';
+import { ThemeProvider } from '@emotion/react';
 
-const theme = createTheme({
+
+const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#82d219'
+      main: teal[500]
     },
     secondary: {
-      main: '#ff6600'
-    }
+      main: pink[500]
+    },
   }
-})
 
+
+})
 
 function App() {
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <div className="App">
         <NavBar />
-        <ItemListContainer color="primary" greeting={"María Laura"} />
+        <ItemListContainer greeting={"María Laura"} />
       </div>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,33 +6,44 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import imagenes from '../Images/Imagenes.js'
+import ItemCount from './ItemCount.jsx';
 
 
-export default function MediaCard(props) {
+export default function MediaCard({ descripcion, precio, alt, imagen, initial, stock }) {
+
+  const [currentStock, setStock] = useState(stock);
+
+  const callback = (count) => {
+    setStock(currentStock - count);
+    console.log(`Agregar ${count} al carrito`);       
+  }
 
   return (
+
     <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
         height="200"
-        image={imagenes[props.imagen]}
-        alt={props.alt}
+        image={imagenes[imagen]}
+        alt={alt}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {props.precio}
+          {precio}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{
+        <Typography variant="body2" sx={{
           minHeight: '40px',
           color: '#999',
         }}>
-          {props.descripcion}
+          {descripcion}
         </Typography>
       </CardContent>
+
       <CardActions>
-        <Button size="small">Comprar</Button>
-        <Button size="small">Agregar al carrito</Button>        
+        <ItemCount stock={currentStock} initial={initial} onAdd={callback} />
       </CardActions>
+
     </Card>
+
   );
 }
