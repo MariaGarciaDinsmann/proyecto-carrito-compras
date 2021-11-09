@@ -3,6 +3,7 @@ import ItemListContainer from './Components/ItemListContainer.jsx';
 import { createMuiTheme}  from '@mui/material';
 import { teal, pink } from '@mui/material/colors';
 import { ThemeProvider } from '@emotion/react';
+import './styles.css'
 
 
 const theme = createMuiTheme({
