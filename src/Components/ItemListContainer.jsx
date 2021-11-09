@@ -1,4 +1,3 @@
-import React from 'react';
 import MediaCard from './MediaCard.jsx'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -19,11 +18,11 @@ const tarjetas = [
 { descripcion: "Descripción 4", precio: "$4.677", alt: "Zapatillas", imagen: 3, initial: 1, stock: 3 }];
 
 
-export default function ItemListContainer(props) {
+export default function ItemListContainer( {greeting} ) {
 
     return (
         <div>
-            <Typography style={styles.greeting} color="secondary">Bienvenida {props.greeting}</Typography>
+            <Typography style={styles.greeting} color="secondary">Bienvenida {greeting}</Typography>
             <Container>
                 <Box
                     sx={{

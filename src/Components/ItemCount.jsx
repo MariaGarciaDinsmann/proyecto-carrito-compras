@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
@@ -12,16 +12,12 @@ function ItemCount({ stock, initial, onAdd }) {
     const handleIncrement = () => {
         if (count < stock) {
             setCount(count + 1);
-        } else {
-            console.log("error")
-        }
+        } 
     };
 
     const handleDecrement = () => {
         if (count > initial) {
             setCount(count - 1);
-        } else {
-            console.log("error")
         }
     };
 

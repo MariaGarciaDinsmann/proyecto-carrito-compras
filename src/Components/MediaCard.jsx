@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import imagenes from '../Images/Imagenes.js'
 import ItemCount from './ItemCount.jsx';
@@ -15,7 +14,7 @@ export default function MediaCard({ descripcion, precio, alt, imagen, initial, s
 
   const callback = (count) => {
     setStock(currentStock - count);
-    console.log(`Agregar ${count} al carrito`);       
+    alert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos' } al carrito`);       
   }
 
   return (

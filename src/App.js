@@ -1,4 +1,3 @@
-import './App.css';
 import NavBar from './Components/NavBar.jsx';
 import ItemListContainer from './Components/ItemListContainer.jsx';
 import { createMuiTheme}  from '@mui/material';
