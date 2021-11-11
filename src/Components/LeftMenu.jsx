@@ -1,4 +1,4 @@
-import { Divider, IconButton, List, ListItem, ListItemText, SwipeableDrawer, Typography } from "@mui/material";
+import { Divider, IconButton, List, ListItem, ListItemText, SwipeableDrawer } from "@mui/material";
 import { styled, useTheme } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -38,7 +38,7 @@ function LeftMenu({ open, onOpen, onClose }) {
             name: 'Cerrar sesión'
         },
     ]
-    const [categories, changeCategories] = useState(categoriesObj);
+    const [categories] = useState(categoriesObj);
 
     return (
         <SwipeableDrawer

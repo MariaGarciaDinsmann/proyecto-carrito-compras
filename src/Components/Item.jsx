@@ -4,11 +4,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import imagenes from '../Images/Imagenes.js'
+import imagenes from '../images/imagenes.js'
 import ItemCount from './ItemCount.jsx';
 
 
-export default function MediaCard({ descripcion, precio, alt, imagen, initial, stock }) {
+export default function Item({id, descripcion, precio, alt, imagen, initial, stock }) {
 
   const [currentStock, setStock] = useState(stock);
 

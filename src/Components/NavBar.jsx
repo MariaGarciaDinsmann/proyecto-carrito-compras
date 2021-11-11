@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CartWidget from './CartWidget';
 import LeftMenu from './LeftMenu';
 import InputSearch from './InputSearch.jsx';
-import logoSportshop from '../Images/logoSportshop.png';
+import logoSportshop from '../images/logoSportshop.png';
 
 const NavBar2 = () => {
 
@@ -36,7 +36,7 @@ const NavBar2 = () => {
           >
             <MenuIcon />
           </IconButton>
-          <img src={logoSportshop} />
+          <img src={logoSportshop} alt="SportShop" />
           <Typography variant="h6" component="div" sx={{ fontFamily: "'Righteous', cursive", fontSize: "1.8rem" }}>
             SportShop
           </Typography>

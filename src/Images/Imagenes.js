@@ -1,7 +1,7 @@
-import zapatillas01 from '../Images/zapatillas01.jpg';
-import zapatillas02 from '../Images/zapatillas02.jpg';
-import zapatillas03 from '../Images/zapatillas03.jpg';
-import zapatillas04 from '../Images/zapatillas04.jpg';
+import zapatillas01 from '../images/zapatillas01.jpg';
+import zapatillas02 from '../images/zapatillas02.jpg';
+import zapatillas03 from '../images/zapatillas03.jpg';
+import zapatillas04 from '../images/zapatillas04.jpg';
 
 const imagenes = [
     zapatillas01,
