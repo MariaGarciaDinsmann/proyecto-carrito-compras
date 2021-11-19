@@ -1,5 +1,6 @@
 import NavBar from './Components/NavBar.jsx';
-import ItemListContainer from './Components/ItemListContainer.jsx';
+// import ItemListContainer from './Components/ItemListContainer.jsx';
+import ItemDetailContainer from './Components/ItemDetailContainer.jsx';
 import { createMuiTheme}  from '@mui/material';
 import { teal, pink } from '@mui/material/colors';
 import { ThemeProvider } from '@emotion/react';
@@ -24,7 +25,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <NavBar />
-        <ItemListContainer greeting={"María Laura"} />
+        {/* <ItemListContainer greeting={"María Laura"} /> */}
+        <ItemDetailContainer id={'1'}/>
       </div>
     </ThemeProvider>
   );

@@ -1,25 +1,26 @@
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import Item from './Item'
+import Detail from './Detail'
 
-export default function ItemList({cardList}) {    
+export default function ItemDetail({ cardDetail }) {
+
     return (
         <Container>
             <Box
                 sx={{
                     display: 'flex',
-                    flexWrap: 'wrap', 
-                    backgroundColor:'#e9e5e5',
-                    paddingLeft: 0.5,                   
+                    flexWrap: 'wrap',
                     '& > :not(style)': {
                         m: 1,
                         width: 270,
                         height: 410,
-                        backgroundColor:'#f3f2f2',
                     },
                 }}>
-                {cardList.map((card) => { return <Item key={card.id} initial={1} {...card} /> })}
+                <Detail key={cardDetail.id} initial={1} {...cardDetail} /> 
             </Box>
         </Container >
-    )
+    );
 }
+
+
+

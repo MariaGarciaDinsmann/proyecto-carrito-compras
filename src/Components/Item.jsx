@@ -4,11 +4,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import imagenes from '../images/imagenes.js'
-import ItemCount from './ItemCount.jsx';
+import imagenes from '../images/imagenes'
+import ItemCount from './ItemCount';
 
 
-export default function Item({id, descripcion, precio, alt, imagen, initial, stock }) {
+export default function Item({titulo, precio, alt, imagen, initial, stock }) {
 
   const [currentStock, setStock] = useState(stock);
 
@@ -34,7 +34,7 @@ export default function Item({id, descripcion, precio, alt, imagen, initial, sto
           minHeight: '40px',
           color: '#999',
         }}>
-          {descripcion}
+          {titulo}
         </Typography>
       </CardContent>
 
