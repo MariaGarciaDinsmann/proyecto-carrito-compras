@@ -1,25 +1,13 @@
-import { useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import imagenes from '../images/imagenes'
-import ItemCount from './ItemCount';
 
-
-export default function Item({titulo, precio, alt, imagen, initial, stock }) {
-
-  const [currentStock, setStock] = useState(stock);
-
-  const callback = (count) => {
-    setStock(currentStock - count);
-    alert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos' } al carrito`);       
-  }
+export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclaracion2 }) {
 
   return (
-
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300, height: 380 }}>
       <CardMedia
         component="img"
         height="200"
@@ -27,6 +15,9 @@ export default function Item({titulo, precio, alt, imagen, initial, stock }) {
         alt={alt}
       />
       <CardContent>
+        <Typography variant="button" display="block" gutterBottom color="secondary" sx={{ background: '#e91e63', color: 'white', display:'inline-block', pl: 1, pr: 1, borderRadius: 1 }}>
+          {aclaracion2}
+        </Typography>
         <Typography gutterBottom variant="h5" component="div">
           {precio}
         </Typography>
@@ -36,12 +27,10 @@ export default function Item({titulo, precio, alt, imagen, initial, stock }) {
         }}>
           {titulo}
         </Typography>
+        <Typography variant="overline" display="block" gutterBottom mt={2} color="primary" sx={{ fontWeight: 'bold' }}>
+          {aclaracion1}
+        </Typography>
       </CardContent>
-
-      <CardActions>
-        <ItemCount stock={currentStock} initial={initial} onAdd={callback} />
-      </CardActions>
-
     </Card>
 
   );

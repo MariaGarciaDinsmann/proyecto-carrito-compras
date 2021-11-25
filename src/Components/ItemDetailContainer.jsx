@@ -8,8 +8,7 @@ export default function ItemDetailContainer({id}) {
 
     async function fetchingDetailData() {
         try {
-            const data = await getData();
-            const oneCardData = data.find((element) => element.id === id);
+            const oneCardData = await getData({id});
             setCardDetail(oneCardData);
         } catch (err) {
             console.log(err.message);
@@ -18,10 +17,11 @@ export default function ItemDetailContainer({id}) {
 
     useEffect(() => {
         fetchingDetailData();
-    }, [])
+    },)
 
 
-    return (
-        <ItemDetail cardDetail={cardDetail} />
+    return (    
+
+        <ItemDetail key={cardDetail.id} {...cardDetail} />
     )
 }

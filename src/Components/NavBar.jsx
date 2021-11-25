@@ -9,6 +9,7 @@ import CartWidget from './CartWidget';
 import LeftMenu from './LeftMenu';
 import InputSearch from './InputSearch';
 import logoSportshop from '../images/logoSportshop.png';
+import { Link } from "react-router-dom";
 
 const NavBar2 = () => {
 
@@ -36,13 +37,14 @@ const NavBar2 = () => {
           >
             <MenuIcon />
           </IconButton>
-          <img src={logoSportshop} alt="SportShop" />
-          <Typography variant="h6" component="div" sx={{ fontFamily: "'Righteous', cursive", fontSize: "1.8rem" }}>
-            SportShop
-          </Typography>
-          <InputSearch/>  
+          <Link to="/"><img src={logoSportshop} alt="SportShop" sx={{ float: "left" }} />
+            <Typography variant="h6" component="div" sx={{ fontFamily: "'Righteous', cursive", fontSize: "1.8rem", color: "#fff", float: "right", paddingTop: "10px" }}>
+              SportShop
+            </Typography>
+          </Link>
+          <InputSearch />
           <Box sx={{ flexGrow: 1 }} />
-          <CartWidget />          
+          <CartWidget />
         </Toolbar>
       </AppBar>
       <LeftMenu

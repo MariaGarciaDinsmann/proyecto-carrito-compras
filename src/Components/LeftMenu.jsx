@@ -1,8 +1,9 @@
-import { Divider, IconButton, List, ListItem, ListItemText, SwipeableDrawer } from "@mui/material";
+import { Divider, IconButton, List, ListItemText, SwipeableDrawer } from "@mui/material";
 import { styled, useTheme } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const iOS =
     typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -23,19 +24,18 @@ function LeftMenu({ open, onOpen, onClose }) {
     const categoriesObj = [
         {
             id: 1,
-            name: 'Categorías'
-        },
+            name: 'Home',
+            url: '/',
+        },       
         {
             id: 2,
-            name: 'Ofertas'
+            name: 'Zapatillas hombre',
+            url: '/productos/zapatillas-hombre',
         },
         {
             id: 3,
-            name: 'Historial'
-        },
-        {
-            id: 3,
-            name: 'Cerrar sesión'
+            name: 'Zapatillas mujer',
+            url: '/productos/zapatillas-mujer',
         },
     ]
     const [categories] = useState(categoriesObj);
@@ -48,8 +48,8 @@ function LeftMenu({ open, onOpen, onClose }) {
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
-                    boxSizing: 'border-box',                    
-                    color: 'primary',                    
+                    boxSizing: 'border-box',
+                    color: 'primary',
                 },
             }}
             anchor="left"
@@ -62,16 +62,18 @@ function LeftMenu({ open, onOpen, onClose }) {
             <DrawerHeader>
                 <IconButton onClick={onClose} sx={{ color: '#666' }}>
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>               
+                </IconButton>
             </DrawerHeader>
             <Divider sx={{ borderColor: '#ccc' }} />
             <List>
-                {categories.map(({ id, name }) => (
-                    <ListItem button key={id}>
-                        <ListItemText primary={name} />
-                    </ListItem>
-                ))}
+                <ListItemText sx={{ padding: '20px', whiteSpace: 'pre-line' }}>
+                    {categories.map(({ id, name, url }) => (
+                        <Link to={url} key={id}> {name} {"\n"}{"\n"}</Link>
+                    ))}
+                </ListItemText>
             </List>
+
+
         </SwipeableDrawer>
     );
 }

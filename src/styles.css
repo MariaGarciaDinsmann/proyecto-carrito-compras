@@ -2,4 +2,24 @@ body {
     margin:0;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Teko&display=swap');
+
+.header-container {
+    width: 100vw;
+    height: 52px;
+    background-color: #ccc;
+  }
+  
+.navbar {
+    width: 60%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
