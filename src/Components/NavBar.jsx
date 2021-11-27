@@ -11,7 +11,7 @@ import InputSearch from './InputSearch';
 import logoSportshop from '../images/logoSportshop.png';
 import { Link } from "react-router-dom";
 
-const NavBar2 = () => {
+const NavBar = () => {
 
   const [openLeftMenu, changeOpenLeftMenu] = React.useState(false);
 
@@ -37,8 +37,8 @@ const NavBar2 = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/"><img src={logoSportshop} alt="SportShop" sx={{ float: "left" }} />
-            <Typography variant="h6" component="div" sx={{ fontFamily: "'Righteous', cursive", fontSize: "1.8rem", color: "#fff", float: "right", paddingTop: "10px" }}>
+          <Link to="/"><img src={logoSportshop} alt="SportShop" className="logoSportshop" sx={{ float: "left" }} />
+            <Typography variant="h6" component="div" className="sportshop" sx={{ fontFamily: "'Righteous', cursive", fontSize: "1.8rem", color: "#fff", float: "right", paddingTop: "10px" }}>
               SportShop
             </Typography>
           </Link>
@@ -56,4 +56,4 @@ const NavBar2 = () => {
   );
 }
 
-export default NavBar2;
+export default NavBar;

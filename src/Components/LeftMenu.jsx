@@ -48,8 +48,7 @@ function LeftMenu({ open, onOpen, onClose }) {
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
-                    boxSizing: 'border-box',
-                    color: 'primary',
+                    boxSizing: 'border-box',                    
                 },
             }}
             anchor="left"
@@ -66,7 +65,7 @@ function LeftMenu({ open, onOpen, onClose }) {
             </DrawerHeader>
             <Divider sx={{ borderColor: '#ccc' }} />
             <List>
-                <ListItemText sx={{ padding: '20px', whiteSpace: 'pre-line' }}>
+                <ListItemText onClick={onClose} sx={{ padding: '20px', whiteSpace: 'pre-line' }}>
                     {categories.map(({ id, name, url }) => (
                         <Link to={url} key={id}> {name} {"\n"}{"\n"}</Link>
                     ))}

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react"
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function ItemList({ cardList, setCurrentProduct }) {
+export default function ItemList({seccion, cardList, setCurrentProduct }) {
 
     if (cardList.length===0)
         return (
@@ -20,9 +20,9 @@ export default function ItemList({ cardList, setCurrentProduct }) {
             <Fragment>
                 <Container>
                     <Typography variant="h5" gutterBottom component="div" color="primary" mt={3}>
-                        Nuestras ofertas
+                        {seccion}
                     </Typography>
-                    <Box
+                    <Box className="cardListBox"
                         sx={{
                             display: 'flex',
                             flexWrap: 'wrap',

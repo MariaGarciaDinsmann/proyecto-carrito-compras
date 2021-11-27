@@ -23,3 +23,35 @@ a:-webkit-any-link {
     justify-content: space-around;
     align-items: center;
   }
+
+  @media screen and (max-width: 600px) {
+    
+    .logoSportshop {
+      display:none;
+    }
+
+    .sportshop {
+      margin-left: -18px;
+      font-size: 1.6rem;
+      padding-bottom: 7px;
+    }
+
+    .search {
+      width: 122px;
+      margin-right: 0px;
+    }
+
+    .search #inputSearch::placeholder {
+      color: transparent;
+    }
+
+    .cardListBox {
+      display: block!important;
+    }
+
+    .cardListBox div {
+      margin: 0 auto;
+    }
+  }
+
+ 
