@@ -1,3 +1,9 @@
+
+### General Info
+***
+El proyecto se trata de un ecommerce de venta de artículos deportivos creado con React y Firebase. Se utilizó Material UI para su desarrollo. Contamos con varias categorías de productos y se utiliza un carrito para efectuar las compras de los mismos.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
