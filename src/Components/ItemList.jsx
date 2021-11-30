@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react"
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function ItemList({seccion, cardList, setCurrentProduct }) {
+export default function ItemList({seccion, cardList}) {
 
     if (cardList.length===0)
         return (
@@ -41,8 +41,8 @@ export default function ItemList({seccion, cardList, setCurrentProduct }) {
                         {cardList.map((card) => {
 
                             return (
-                                <Link to={`/productos/${card.id}`} onClick={() => setCurrentProduct(card)}>
-                                    <Item key={card.id} {...card} />
+                                <Link to={`/productos/${card.id}`} key={card.id}>
+                                    <Item {...card} />
                                 </Link>
 
                             )

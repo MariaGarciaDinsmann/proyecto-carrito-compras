@@ -6,11 +6,25 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
 
-const [isDarkMode, setIsDarkMode] = useState(false);
+    const [productosAgregados , setProductosAgregados] = useState([]);
+    
+    const addItem = (producto, cantidad) => {
+        setProductosAgregados([...productosAgregados, {...producto, cantidad}]);
+    } 
 
-const toggleTheme = () => setIsDarkMode(!isDarkMode);
+    const removeItem = (id) => {
+        return productosAgregados.filter(element => element.id !== id);
+    }
 
-    return <CartContext.Provider value={{ isDarkMode, setIsDarkMode, toggleTheme }}> {children} </CartContext.Provider>
+    const clear = () => {
+        setProductosAgregados([]);
+    } 
+
+    const isInCart = (id) => {
+        return productosAgregados.find(element => element.id === id);
+    }
+
+    return <CartContext.Provider value={{ productosAgregados, addItem ,removeItem , clear, isInCart}}> {children} </CartContext.Provider>
 };
 
 export default CartProvider;

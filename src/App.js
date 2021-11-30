@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { createMuiTheme } from '@mui/material';
@@ -9,7 +8,6 @@ import ItemListContainer from './Components/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import Cart from './Components/Cart';
 import CartProvider from './contexts/CartContext';
-
 
 const theme = createMuiTheme({
   palette: {
@@ -24,18 +22,15 @@ const theme = createMuiTheme({
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState({}) 
-
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <CartProvider>          
-          <NavBar />          
+        <CartProvider>
+          <NavBar />
           <Routes>
-            <Route path="/" element={<ItemListContainer setCurrentProduct={setCurrentProduct} seccion={"Nuestras ofertas"} greeting={"María Laura"} filterType={"subCategory"} filterData={"oferta"} />} />
-            <Route path="/productos/zapatillas-hombre" element={<ItemListContainer seccion={"Zapatillas hombre"} setCurrentProduct={setCurrentProduct} filterType={"category"} filterData={"zapatillas-hombre"} />} />
-            <Route path="/productos/zapatillas-mujer" element={<ItemListContainer seccion={"Zapatillas mujer"} setCurrentProduct={setCurrentProduct} filterType={"category"} filterData={"zapatillas-mujer"} />} />
-            <Route path="/productos/:productID" element={<ItemDetailContainer {...currentProduct} />} />
+            <Route path="/" element={<ItemListContainer greeting={"María Laura"} />} />
+            <Route path="/categoria/:categoryID" element={<ItemListContainer />} />
+            <Route path="/productos/:productID" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </CartProvider>

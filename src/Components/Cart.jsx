@@ -1,23 +1,16 @@
-import { Container } from '@mui/material';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 
-const Cart = ({ title, children }) => {
+const Cart = () => {
 
-    const { isDarkMode, setIsDarkMode } = useContext(CartContext)
+    const { productosAgregados } = useContext(CartContext)    
 
-    console.log(isDarkMode);
+    console.log(productosAgregados);
 
     return (
         <>
-            <Container isDarkMode={isDarkMode}>
-                <p>Darkmode: {isDarkMode}</p>
-                <h1> {title} </h1>
-                <p> {children} </p>
-                <button onClick={() => { setIsDarkMode(!isDarkMode) }}>botón</button>
-            </Container>
+            <p> Cart </p>
         </>
     )
 }
-
 export default Cart;

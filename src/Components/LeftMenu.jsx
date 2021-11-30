@@ -30,12 +30,12 @@ function LeftMenu({ open, onOpen, onClose }) {
         {
             id: 2,
             name: 'Zapatillas hombre',
-            url: '/productos/zapatillas-hombre',
+            url: '/categoria/zapatillas-hombre',
         },
         {
             id: 3,
             name: 'Zapatillas mujer',
-            url: '/productos/zapatillas-mujer',
+            url: '/categoria/zapatillas-mujer',
         },
     ]
     const [categories] = useState(categoriesObj);

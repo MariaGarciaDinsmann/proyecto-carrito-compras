@@ -5,20 +5,31 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import imagenes from '../images/imagenes'
 import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import ItemCount from './ItemCount';
+import { CartContext } from '../contexts/CartContext';
 
-export default function ItemDetail({ titulo, descripcion, precio, alt, imagen, link, stock, aclaracion2 }) {
+export default function ItemDetail({ cardDetail }) {
+
+    const { addItem, isInCart } = useContext(CartContext)
+
+    const { titulo, descripcion, precio, alt, imagen, link, stock, aclaracion2 } = cardDetail;
 
     const [currentStock, setStock] = useState(stock);
 
-    const onAdd = (count) => {
-        setStock(currentStock - count);
-        alert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`);
+    const onAdd = (count, redirect) => {
+        if (!isInCart(cardDetail.id)) {
+            setStock(currentStock - count);
+            addItem(cardDetail, count);
+            alert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`);
+        }
+        else if(!redirect)
+            alert("este producto ya fue agregado");
+
     }
 
     if (!titulo)
@@ -57,7 +68,7 @@ export default function ItemDetail({ titulo, descripcion, precio, alt, imagen, l
                             <Typography variant="h5">
                                 {titulo}
                             </Typography>
-                            <Typography variant="button" display="block" gutterBottom color="secondary" sx={{ background: '#e91e63', color: 'white', display: 'inline-block', pl: 1, pr: 1, mt:2, borderRadius: 1 }}>
+                            <Typography variant="button" display="block" gutterBottom color="secondary" sx={{ background: '#e91e63', color: 'white', display: 'inline-block', pl: 1, pr: 1, mt: 2, borderRadius: 1 }}>
                                 {aclaracion2}
                             </Typography>
                             <Typography sx={{ mb: 3, mt: 3 }} color="text.secondary">
@@ -75,6 +86,7 @@ export default function ItemDetail({ titulo, descripcion, precio, alt, imagen, l
             </Container >
         );
 }
+
 
 
 
