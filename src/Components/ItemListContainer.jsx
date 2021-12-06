@@ -2,44 +2,43 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import ItemList from './ItemList'
-import getData from '../mocks/cards'
-
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 export default function ItemListContainer({ greeting }) {
+
+    const { categoryID } = useParams();
+
+    const [cardList, setCardList] = useState([]);
+
+    const filterData = categoryID;
+
+    const filterType = !filterData ? 'subCategory' : 'category';
+
+    const filterDataByType = (data, filterType, filterData = 'oferta') => {
+        return data.filter(element => element[filterType] === filterData);
+    }
+
+    useEffect(() => {
+        const db = getFirestore();
+
+        const itemsCollection = collection(db, "items");
+        getDocs(itemsCollection).then((snapshot) => {
+            const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            setCardList(filterDataByType(tempList, filterType, filterData));
+        });
+    }, [filterData]);
 
     function renameSeccion() {
         seccion = seccion.replace('-', ' ');
         seccion = seccion[0].toUpperCase() + seccion.substring(1);
     }
 
-    const { categoryID } = useParams();
-
     let seccion = categoryID;
 
-    if(seccion)
-        renameSeccion() 
+    if (seccion)
+        renameSeccion()
     else
         seccion = 'Nuestras ofertas'
-
-    const filterData = categoryID;
-
-    const filterType = !filterData ? 'subCategory' : 'category';
-
-    const [cardList, setCardList] = useState([]);
-
-    async function fetchingData() {
-        try {
-            setCardList([]);
-            const data = await getData({ filterType, filterData }); //no sigue la ejecucion del bloque del try hasta que no se complete el resolve de la promise
-            setCardList(data);
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
-
-    useEffect(() => {
-        fetchingData();
-    }, [filterData])
 
     return (
         <div>

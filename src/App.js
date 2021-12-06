@@ -12,7 +12,7 @@ import CartProvider from './contexts/CartContext';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[500]
+      main: teal[500]      
     },
     secondary: {
       main: pink[500]
@@ -20,8 +20,8 @@ const theme = createMuiTheme({
   }
 })
 
-function App() {
-
+export default function App() {
+  
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+

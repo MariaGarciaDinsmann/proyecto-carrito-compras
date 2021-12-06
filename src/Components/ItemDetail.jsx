@@ -13,22 +13,26 @@ import CircularProgress from '@mui/material/CircularProgress';
 import ItemCount from './ItemCount';
 import { CartContext } from '../contexts/CartContext';
 
+
 export default function ItemDetail({ cardDetail }) {
 
     const { addItem, isInCart } = useContext(CartContext)
 
     const { titulo, descripcion, precio, alt, imagen, link, stock, aclaracion2 } = cardDetail;
 
-    const [currentStock, setStock] = useState(stock);
+    const [currentStock, setCurrentStock] = useState(stock);
 
     const onAdd = (count, redirect) => {
-        if (!isInCart(cardDetail.id)) {
-            setStock(currentStock - count);
-            addItem(cardDetail, count);
-            alert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`);
+        let mensajeAlert = "Este producto ya fue agregado";
+
+        if (!isInCart(cardDetail.id)) { //si el id no esta en la lista de productos agregados
+            setCurrentStock(currentStock - count);
+            addItem(cardDetail, count);// agrega producto y cantidad a la lista de productos agregados
+            mensajeAlert = `Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`;
         }
-        else if(!redirect)
-            alert("este producto ya fue agregado");
+
+        if (!redirect)//se muestra el alert si redirect es false -> es del carrito
+            alert(mensajeAlert);
 
     }
 
@@ -40,7 +44,7 @@ export default function ItemDetail({ cardDetail }) {
         )
     else
         return (
-            <Container>
+            <Container>                
                 <Box
                     sx={{
                         display: 'flex',
@@ -63,7 +67,7 @@ export default function ItemDetail({ cardDetail }) {
                     <Card variant="outlined" sx={{ minWidth: 700, minHeight: 480 }}>
                         <CardContent>
                             <Typography sx={{ mt: 3 }} variant="h4" color="secondary" gutterBottom>
-                                {precio}
+                                {`$${precio}`}
                             </Typography>
                             <Typography variant="h5">
                                 {titulo}

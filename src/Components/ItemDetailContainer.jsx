@@ -1,29 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail'
-import getData from '../mocks/cards'
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 
 export default function ItemDetailContainer() {
 
-    const {productID} = useParams();
-    const [cardDetail, setCardDetail] = useState({});
-
-    async function fetchingDetailData() {
-        try {
-            const oneCardData = await getData({id: productID});
-            setCardDetail(oneCardData);
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
+    const { productID } = useParams();
+    const [cardDetail, setCardDetail] = useState({}); 
 
     useEffect(() => {
-        fetchingDetailData();
-    },)
+        const db = getFirestore();
+        
+        const itemRef = doc(db, "items", productID)
+        getDoc(itemRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                setCardDetail({ ...snapshot.data(), id: snapshot.id });
+            }
+        });
+    }, []);
 
-
-    return (    
-
-        <ItemDetail key={cardDetail.id} cardDetail={cardDetail} />
+    return (
+        <>
+            <ItemDetail key={cardDetail.id} cardDetail={cardDetail} />
+        </>
     )
 }

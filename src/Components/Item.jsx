@@ -19,7 +19,7 @@ export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclarac
           {aclaracion2}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {precio}
+        {`$${precio}`}
         </Typography>
         <Typography variant="body2" sx={{
           minHeight: '40px',
