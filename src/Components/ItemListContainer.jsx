@@ -19,6 +19,7 @@ export default function ItemListContainer({ greeting }) {
     }
 
     useEffect(() => {
+        setCardList([]);
         const db = getFirestore();
 
         const itemsCollection = collection(db, "items");
