@@ -10,7 +10,7 @@ import CartItems from './CartItems';
 import CartSummary from './CartSummary';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import publicidad01 from '../imagenes/publicidad-01.jpg';
+import publicidad01 from '../imagenes/publicidad-01.png';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -55,21 +55,24 @@ const Cart = () => {
 
                     </Grid>
                     <Grid item xs={4}>
-                        <Item sx={{ backgroundColor: '#333', color: '#fff' }}>
-                            {
-                                productosAgregados.length ?
-                                    <>
+
+                        {
+                            productosAgregados.length ?
+                                <>
+                                    <Item sx={{ backgroundColor: '#333', color: '#fff' }}>
                                         <Typography variant="subtitle1" sx={{ mb: 3 }}>RESUMEN DE COMPRA</Typography>
                                         <CartSummary />
-                                    </> :
-                                    <>
-                                        <Typography variant="h5" sx={{ mb: 3 }}>¡No te pierdas nuestras ofertas!</Typography>
+                                    </Item>
+                                </> :
+                                <>
+                                    <Item>
                                         <Link to="/">
-                                            <img src={publicidad01} alt="publicidad" style={{ margin: "auto", display: "block", marginBottom: 8 }} />
+                                            <img src={publicidad01} alt="publicidad" style={{ margin: "auto", display: "block", marginBottom: 8, marginTop: 8 }} />
                                         </Link>
-                                    </>
-                            }
-                        </Item>
+                                    </Item>
+                                </>
+                        }
+
                     </Grid>
                 </Grid>
             </Box>

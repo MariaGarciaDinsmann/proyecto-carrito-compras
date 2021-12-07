@@ -8,7 +8,7 @@ import zapatillasMujer02 from '../imagenes/zapatillas-mujer-02.jpg';
 import zapatillasMujer03 from '../imagenes/zapatillas-mujer-03.jpg';
 import zapatillasMujer04 from '../imagenes/zapatillas-mujer-04.jpg';
 
-import publicidad01 from '../imagenes/publicidad-01.jpg';
+import publicidad01 from '../imagenes/publicidad-01.png';
 
 const imagenes = {
     zapatillasHombre01,
