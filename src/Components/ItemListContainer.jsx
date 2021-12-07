@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import ItemList from './ItemList'
-import { collection, getDocs, getFirestore } from "firebase/firestore"
+import ItemList from './ItemList';
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import listaCategorias from '../categorias/categorias'
 
 export default function ItemListContainer({ greeting }) {
 
@@ -27,24 +28,12 @@ export default function ItemListContainer({ greeting }) {
             const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setCardList(filterDataByType(tempList, filterType, filterData));
         });
-    }, [filterData]);
-
-    function renameSeccion() {
-        seccion = seccion.replace('-', ' ');
-        seccion = seccion[0].toUpperCase() + seccion.substring(1);
-    }
-
-    let seccion = categoryID;
-
-    if (seccion)
-        renameSeccion()
-    else
-        seccion = 'Nuestras ofertas'
+    }, [filterData, filterType]);
 
     return (
         <div>
             {greeting ? (<Typography sx={{ padding: '0.5em', fontSize: '20px', marginTop: '20px' }} color="secondary">Bienvenida {greeting}</Typography>) : ("")}
-            <ItemList seccion={seccion} cardList={cardList} />
+            <ItemList seccion={listaCategorias[categoryID]} cardList={cardList} />
         </div>
     )
 }

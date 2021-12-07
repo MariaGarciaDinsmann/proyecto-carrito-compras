@@ -17,7 +17,7 @@ export default function ItemDetailContainer() {
                 setCardDetail({ ...snapshot.data(), id: snapshot.id });
             }
         });
-    }, []);
+    }, [productID]);
 
     return (
         <>

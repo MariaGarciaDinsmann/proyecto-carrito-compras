@@ -23,7 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Cart = () => {
 
-    const { productosAgregados, removeItem, editCountItem, clear, totalProducts } = useContext(CartContext)
+    const { productosAgregados, removeItem, clear, totalProducts } = useContext(CartContext)
 
     return (
         <Container>

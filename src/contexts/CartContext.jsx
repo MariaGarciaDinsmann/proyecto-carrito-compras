@@ -35,17 +35,13 @@ const CartProvider = ({ children }) => {
 
     const totalProducts = () => {
         let total = 0;
-        productosAgregados.map((producto) => {
-            total += producto.cantidad
-        })
+        productosAgregados.forEach(producto => total += producto.cantidad)
         return total;
     }
 
     const totalPrice = () => {        
         let total = 0;
-        productosAgregados.map((producto) => {
-            total += producto.cantidad * producto.precio
-        })
+        productosAgregados.forEach(producto => total += producto.cantidad * producto.precio)
         return total;
     }  
 
