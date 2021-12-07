@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CartWidget from './CartWidget';
 import LeftMenu from './LeftMenu';
 import InputSearch from './InputSearch';
-import logoSportshop from '../images/logoSportshop.png';
+import logoSportshop from '../imagenes/logoSportshop.png';
 import { Link } from "react-router-dom";
 
 const NavBar = () => {

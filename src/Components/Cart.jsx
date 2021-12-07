@@ -10,7 +10,7 @@ import CartItems from './CartItems';
 import CartSummary from './CartSummary';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import publicidad01 from '../images/publicidad-01.jpg';
+import publicidad01 from '../imagenes/publicidad-01.jpg';
 
 
 const Item = styled(Paper)(({ theme }) => ({

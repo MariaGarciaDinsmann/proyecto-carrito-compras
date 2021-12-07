@@ -7,14 +7,25 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
-import imagenes from '../images/imagenes'
+import imagenes from '../imagenes/imagenes'
 import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import ItemCount from './ItemCount';
 import { CartContext } from '../contexts/CartContext';
+import DialogAlert from './DialogAlert'
 
 
 export default function ItemDetail({ cardDetail }) {
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const { addItem, isInCart } = useContext(CartContext)
 
@@ -22,17 +33,22 @@ export default function ItemDetail({ cardDetail }) {
 
     const [currentStock, setCurrentStock] = useState(stock);
 
-    const onAdd = (count, redirect) => {
-        let mensajeAlert = "Este producto ya fue agregado";
+    const [mensajeAlert, setmensajeAlert] = useState("Este producto ya fue agregado");
+
+    const onAdd = (count, openDialog) => {
 
         if (!isInCart(cardDetail.id)) { //si el id no esta en la lista de productos agregados
             setCurrentStock(currentStock - count);
             addItem(cardDetail, count);// agrega producto y cantidad a la lista de productos agregados
-            mensajeAlert = `Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`;
+            setmensajeAlert(`Agregaste ${count} ${count === 1 ? 'producto' : 'productos'} al carrito`);
         }
 
-        if (!redirect)//se muestra el alert si redirect es false -> es del carrito
-            alert(mensajeAlert);
+        //logica para el Dialog | open y mensaje
+
+       setOpen(openDialog);
+        /* 
+                if (!redirect)//se muestra el alert si redirect es false -> es del carrito
+                    alert(mensajeAlert); */
 
     }
 
@@ -44,7 +60,7 @@ export default function ItemDetail({ cardDetail }) {
         )
     else
         return (
-            <Container>                
+            <Container>
                 <Box
                     sx={{
                         display: 'flex',
@@ -87,6 +103,7 @@ export default function ItemDetail({ cardDetail }) {
                         </CardActions>
                     </Card>
                 </Box>
+                <DialogAlert handleClickOpen={handleClickOpen} handleClose={handleClose} open={open} mensaje={mensajeAlert}/>
             </Container >
         );
 }

@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import imagenes from '../images/imagenes'
+import imagenes from '../imagenes/imagenes'
 
 export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclaracion2 }) {
 
