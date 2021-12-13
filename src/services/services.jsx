@@ -52,9 +52,13 @@ export default class Services {
     updateDoc(orderRef, { stock: newStock })
   }
 
-  static addOrder = (order) => {     
+  static addOrder = (order) => {
+    const currentDate = new Date();
+    const timestamp = currentDate.getTime();
+    var date = new Date(timestamp);
     const db = getFirestore();
     const orderCollection = collection(db, "orders");
-    return addDoc(orderCollection, order)
+    const data = { ...order, date: date }
+    return addDoc(orderCollection, data)
   }
 }
