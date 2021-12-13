@@ -7,6 +7,7 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
 
     const [productosAgregados, setProductosAgregados] = useState([]);
+    const [orderID, setOrderID] = useState();
 
     const addItem = (producto, cantidad) => {
         setProductosAgregados([...productosAgregados, { ...producto, cantidad }]);
@@ -43,9 +44,9 @@ const CartProvider = ({ children }) => {
         let total = 0;
         productosAgregados.forEach(producto => total += producto.cantidad * producto.precio)
         return total;
-    }  
+    }   
 
-    return <CartContext.Provider value={{ productosAgregados, addItem, removeItem, clear, isInCart, editCountItem, totalProducts, totalPrice }}> {children} </CartContext.Provider>
+    return <CartContext.Provider value={{ productosAgregados, addItem, removeItem, clear, isInCart, editCountItem, totalProducts, totalPrice, orderID, setOrderID }}> {children} </CartContext.Provider>
 };
 
 export default CartProvider;

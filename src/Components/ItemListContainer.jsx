@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import ItemList from './ItemList';
-import { collection, getDocs, getFirestore } from "firebase/firestore";
 import listaCategorias from '../categorias/categorias'
+import Services from '../services/services'
 
 export default function ItemListContainer({ greeting }) {
 
@@ -13,21 +13,10 @@ export default function ItemListContainer({ greeting }) {
 
     const filterData = categoryID;
 
-    const filterType = !filterData ? 'subCategory' : 'category';
-
-    const filterDataByType = (data, filterType, filterData = 'oferta') => {
-        return data.filter(element => element[filterType] === filterData);
-    }
+    const filterType = !filterData ? 'subCategory' : 'category'; 
 
     useEffect(() => {
-        setCardList([]);
-        const db = getFirestore();
-
-        const itemsCollection = collection(db, "items");
-        getDocs(itemsCollection).then((snapshot) => {
-            const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-            setCardList(filterDataByType(tempList, filterType, filterData));
-        });
+        Services.getByType(setCardList, filterType, filterData);      
     }, [filterData, filterType]);
 
     return (

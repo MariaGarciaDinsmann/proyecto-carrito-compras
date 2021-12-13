@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+import { collection, getDocs, doc, getDoc, getFirestore, updateDoc, addDoc } from "firebase/firestore"
+
 
 export default class Services {
 
@@ -17,4 +19,42 @@ export default class Services {
     initializeApp(Services.firebaseConfig);
   };
 
+  static filterDataByType = (data, filterType, filterData = 'oferta') => {
+    return data.filter(element => element[filterType] === filterData);
+  }
+
+  static getByType = async (setFunction, filterData, filterType) => {
+    setFunction([]);
+
+    const db = getFirestore();
+
+    const itemsCollection = collection(db, "items");
+    getDocs(itemsCollection).then((snapshot) => {
+      const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setFunction(Services.filterDataByType(tempList, filterData, filterType));
+    });
+  }
+
+  static getById = (id, setFunction) => {
+    const db = getFirestore();
+
+    const itemRef = doc(db, "items", id)
+    getDoc(itemRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        setFunction({ ...snapshot.data(), id: snapshot.id });
+      }
+    });
+  }
+
+  static updateItem = (id, newStock) => {
+    const db = getFirestore();
+    const orderRef = doc(db, "items", id);
+    updateDoc(orderRef, { stock: newStock })
+  }
+
+  static addOrder = (order) => {     
+    const db = getFirestore();
+    const orderCollection = collection(db, "orders");
+    return addDoc(orderCollection, order)
+  }
 }

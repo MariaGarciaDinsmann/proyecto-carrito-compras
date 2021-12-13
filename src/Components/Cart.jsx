@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import publicidad01 from '../imagenes/publicidad-01.png';
 
 
+
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(2),
@@ -36,7 +37,8 @@ const Cart = () => {
                                 productosAgregados.length ?
                                     productosAgregados.map((producto) => {
                                         return (
-                                            <CartItems {...producto} removeItem={removeItem} />)
+                                            <CartItems {...producto} removeItem={removeItem} />
+                                        )
                                     })
                                     :
                                     <>
@@ -52,7 +54,6 @@ const Cart = () => {
                             }
                             <div style={{ clear: "both" }}></div>
                         </Item>
-
                     </Grid>
                     <Grid item xs={4}>
 
@@ -72,8 +73,7 @@ const Cart = () => {
                                     </Item>
                                 </>
                         }
-
-                    </Grid>
+                    </Grid>                    
                 </Grid>
             </Box>
         </Container>

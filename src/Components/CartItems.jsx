@@ -19,9 +19,9 @@ const Img = styled('img')({
 });
 
 export default function CartItems({ id, titulo, precio, alt, imagen, aclaracion1, aclaracion2, removeItem, cantidad, stock }) {
-    
+
     const { editCountItem } = useContext(CartContext)
-    
+
     const handleIncrement = () => {
         if (cantidad < stock) {
             editCountItem(id, cantidad + 1);
@@ -33,7 +33,7 @@ export default function CartItems({ id, titulo, precio, alt, imagen, aclaracion1
             editCountItem(id, cantidad - 1);
         }
     };
-    
+
     return (
         <>
             <Grid item container sx={{ mb: 3 }}>
@@ -62,8 +62,8 @@ export default function CartItems({ id, titulo, precio, alt, imagen, aclaracion1
                                         </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Button variant="contained" color="primary" startIcon={<DeleteIcon />} sx={{ mr: 1 }}  onClick={()=>{removeItem(id)}}>
-                                            Delete
+                                        <Button variant="contained" color="primary" startIcon={<DeleteIcon />} sx={{ mr: 1 }} onClick={() => { removeItem(id) }}>
+                                            Borrar
                                         </Button>
                                     </Grid>
 
@@ -71,7 +71,7 @@ export default function CartItems({ id, titulo, precio, alt, imagen, aclaracion1
                                 <Grid item>
                                     <Grid item xs>
                                         <Typography variant="subtitle1" color="secondary" sx={{ lineHeight: 1.4, fontSize: "18px", pl: 4 }}>
-                                        {`$${precio}`}
+                                            {`$${precio}`}
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -79,7 +79,7 @@ export default function CartItems({ id, titulo, precio, alt, imagen, aclaracion1
                         </Grid>
                     </Paper>
                 </Grid>
-            </Grid>
+            </Grid>            
         </>
 
     );
