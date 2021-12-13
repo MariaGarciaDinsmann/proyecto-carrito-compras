@@ -26,7 +26,7 @@ export default function BasicTextFields({ label, funcion }) {
       <TextField id="outlined-basic"
         name={label}
         label={label}
-        variant="filled"
+        variant="filled"        
         className={classes.TextField}
         onBlur={funcion}
       />

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Router } from 'react-router';
 import { useState } from 'react';
 import BasicTextFields from './BasicTextFields';
 import Button from '@mui/material/Button';
@@ -7,7 +6,7 @@ import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import Services from '../services/services'
 import { Typography } from '@mui/material';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Joi from 'joi';
 
 
@@ -20,6 +19,8 @@ export default function Form() {
         mail: "",
         phone: ""
     });
+
+    let navigate = useNavigate();
 
     const handleChange = (event) => {
         setFormValues({ ...formValues, [event.target.name]: event.target.value })
@@ -62,18 +63,20 @@ export default function Form() {
 
         const error = validate(order);
 
-        Services.addOrder(order).then(({ id }) => {
-            setOrderID(id);
-
-            productosAgregados.forEach(producto => {
-                const newStock = producto.stock - producto.cantidad;
-                Services.updateItem(producto.id, newStock);
-            })
-
-            clear();
-        });
-
         if (!error.errorKey) {
+            Services.addOrder(order).then(({ id }) => {
+                setOrderID(id);
+
+                productosAgregados.forEach(producto => {
+                    const newStock = producto.stock - producto.cantidad;
+                    Services.updateItem(producto.id, newStock);
+                })
+
+                clear();
+            });
+            
+            navigate('/congrats', { replace: true })
+
         }
         else {
             alert(error.menssage);
@@ -86,11 +89,10 @@ export default function Form() {
             <BasicTextFields label={"name"} funcion={handleChange} />
             <BasicTextFields label={"mail"} funcion={handleChange} />
             <BasicTextFields label={"phone"} funcion={handleChange} />
-            <Link to={'/congrats'}>
-                <Button variant="contained" color="secondary" onClick={checkOut} sx={{ pr: 2, width: '-webkit-fill-available', mt: 4 }}>
-                    Finalizar mi compra
-                </Button>
-            </Link>
+            <Button variant="contained" color="secondary" onClick={checkOut} sx={{ pr: 2, width: '-webkit-fill-available', mt: 4 }}>
+                Finalizar mi compra
+            </Button>
+
         </>
     );
 }
