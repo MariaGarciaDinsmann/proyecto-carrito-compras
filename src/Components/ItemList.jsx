@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import iconoHombre from '../imagenes/icono-hombre.png';
 import iconoMujer from '../imagenes/icono-mujer.png';
 
-export default function ItemList({ seccion, cardList }) {
+export default function ItemList({category, seccion, cardList }) {
 
     if (cardList.length === 0)
         return (
@@ -36,10 +36,10 @@ export default function ItemList({ seccion, cardList }) {
                             </Typography>
                         </Card>
                         <Card sx={{ boxShadow: "none", textAlign: "right" }}>
-                            <Link to="/categoria/zapatillas-hombre">
+                            <Link to={`/categoria/${category}/hombre`}>
                                 <img src={iconoHombre} alt="hombres" style={{ marginRight: "10px" }} />
                             </Link>
-                            <Link to="/categoria/zapatillas-mujer">
+                            <Link to={`/categoria/${category}/mujer`}>
                                 <img src={iconoMujer} alt="mujeres" />
                             </Link>
                         </Card>

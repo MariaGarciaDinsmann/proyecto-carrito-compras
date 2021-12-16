@@ -30,12 +30,12 @@ function LeftMenu({ open, onOpen, onClose }) {
         {
             id: 2,
             name: 'Zapatillas',
-            url: '/categoria/zapatillas-hombre',
+            url: '/categoria/zapatillas',
         },       
         {
             id: 3,
             name: 'Indumentaria',
-            url: '/categoria/indumentaria-hombre',
+            url: '/categoria/indumentaria',
         },
        
     ]

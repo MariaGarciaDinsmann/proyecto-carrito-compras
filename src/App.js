@@ -31,6 +31,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<ItemListContainer greeting={"María Laura"} />} />
             <Route path="/categoria/:categoryID" element={<ItemListContainer />} />
+            <Route path="/categoria/:categoryID/:subCategoryID" element={<ItemListContainer />} />
             <Route path="/productos/:productID" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/congrats" element={<Congrats />} />

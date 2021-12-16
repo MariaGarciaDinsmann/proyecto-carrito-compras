@@ -8,23 +8,29 @@ import Services from '../services/services'
 
 export default function ItemListContainer({ greeting }) {
 
-    const { categoryID } = useParams();
+    const { categoryID, subCategoryID } = useParams();
 
     const [cardList, setCardList] = useState([]);
 
-    const filterData = categoryID;
+    const filters = [];
 
-    const filterType = !filterData ? 'subCategory' : 'category';
+    if (categoryID) {
+        filters.push(categoryID);        
+    }
+
+    if (subCategoryID) {
+        filters.push(subCategoryID);        
+    }
 
     useEffect(() => {
-        Services.getByType(setCardList, filterType, filterData);
-    }, [filterData, filterType]);
+        Services.getByType(setCardList, filters);
+    }, [categoryID, subCategoryID]);
 
     return (
         <div>
             <BannerSlider/>
             {greeting ? (<Typography sx={{ padding: '0.5em', fontSize: '20px', marginTop: '20px' }} color="secondary">Bienvenida {greeting}</Typography>) : ("")}
-            <ItemList seccion={listaCategorias[categoryID]} cardList={cardList} />
+            <ItemList category={categoryID} seccion={listaCategorias[categoryID]} cardList={cardList} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, doc, getDoc, getFirestore, updateDoc, addDoc } from "firebase/firestore"
+import { collection, getDocs, doc, getDoc, getFirestore, updateDoc, addDoc, query, where } from "firebase/firestore"
 
 
 export default class Services {
@@ -19,19 +19,30 @@ export default class Services {
     initializeApp(Services.firebaseConfig);
   };
 
-  static filterDataByType = (data, filterType, filterData = 'oferta') => {
-    return data.filter(element => element[filterType] === filterData);
-  }
-
-  static getByType = async (setFunction, filterData, filterType) => {
+  //filters.length == 0 : oferta || filters.length == 1 : category and  oferta || filters.length == 2 : category and subCategory
+  static getByType = async (setFunction, filters = []) => {
     setFunction([]);
 
     const db = getFirestore();
 
     const itemsCollection = collection(db, "items");
-    getDocs(itemsCollection).then((snapshot) => {
+
+    let filterWhere;
+
+    switch (filters.length) {
+      case 0: filterWhere = (where("oferta", "==", true));
+        break;
+      case 1: filterWhere = (where("oferta", "==", true), where("category", "==", filters[0]));
+        break;
+      case 2: filterWhere = (where("category", "==", filters[0]), where("subCategory", "==", filters[1]));
+        break;
+    }
+
+    const filterQuerys = query(itemsCollection, filterWhere);
+
+    getDocs(filterQuerys).then((snapshot) => {
       const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setFunction(Services.filterDataByType(tempList, filterData, filterType));
+      setFunction(tempList);
     });
   }
 
