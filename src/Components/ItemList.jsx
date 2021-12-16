@@ -1,14 +1,17 @@
-import Container from '@mui/material/Container'
-import Box from '@mui/material/Box'
-import Item from './Item'
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card'
+import Item from './Item';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 import { Fragment } from "react"
 import CircularProgress from '@mui/material/CircularProgress';
+import iconoHombre from '../imagenes/icono-hombre.png';
+import iconoMujer from '../imagenes/icono-mujer.png';
 
-export default function ItemList({seccion, cardList}) {
+export default function ItemList({ seccion, cardList }) {
 
-    if (cardList.length===0)
+    if (cardList.length === 0)
         return (
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '200px', }}>
                 <CircularProgress />
@@ -19,9 +22,24 @@ export default function ItemList({seccion, cardList}) {
         return (
             <Fragment>
                 <Container>
-                    <Typography variant="h5" gutterBottom component="div" color="primary" mt={3}>
-                        {seccion}
-                    </Typography>
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        '& > :not(style)': {
+                            m: 1,
+                            width: "48%",
+                        },
+                    }}>
+                        <Card sx={{ boxShadow: "none" }}>
+                            <Typography variant="h5" gutterBottom component="div" color="primary" mt={3}>
+                                {seccion}
+                            </Typography>
+                        </Card>
+                        <Card sx={{ boxShadow: "none", textAlign: "right" }}>
+                            <img src={iconoHombre} alt="hombres" style={{ marginRight: "10px" }} />
+                            <img src={iconoMujer} alt="mujeres"  />
+                        </Card>
+                    </Box>
                     <Box className="cardListBox"
                         sx={{
                             display: 'flex',

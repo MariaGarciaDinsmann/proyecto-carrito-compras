@@ -20,6 +20,9 @@ import indumentariaMujer04 from '../imagenes/indumentaria-mujer-04.jpg';
 
 import publicidad01 from '../imagenes/publicidad-01.png';
 
+import bannerSlider01 from '../imagenes/banner-slider-01.jpg';
+import bannerSlider02 from '../imagenes/banner-slider-02.jpg';
+
 const imagenes = {
     zapatillasHombre01,
     zapatillasHombre02,
@@ -43,5 +46,11 @@ const imagenes = {
 
     publicidad01,
 };
+
+
+export const bannerData = [
+    bannerSlider01,
+    bannerSlider02,     
+  ];
 
 export default imagenes;

@@ -86,9 +86,9 @@ export default function Form() {
     return (
         <>
             <Typography>Para poder finalizar tu compra deberás completar el fomulario:</Typography>
-            <BasicTextFields label={"name"} funcion={handleChange} />
-            <BasicTextFields label={"mail"} funcion={handleChange} />
-            <BasicTextFields label={"phone"} funcion={handleChange} />
+            <BasicTextFields name={'name'} label={"Nombre y apellido"} funcion={handleChange} helperText={"Ejemplo: Juan Méndez"} />
+            <BasicTextFields name={'mail'} label={"Mail"} funcion={handleChange} helperText={"Ejemplo: nombre@dominio.com"} />
+            <BasicTextFields name={'phone'} label={"Teléfono"} funcion={handleChange} helperText={"Ejemplo: 1144446666"} />
             <Button variant="contained" color="secondary" onClick={checkOut} sx={{ pr: 2, width: '-webkit-fill-available', mt: 4 }}>
                 Finalizar mi compra
             </Button>

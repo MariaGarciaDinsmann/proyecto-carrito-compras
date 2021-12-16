@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export default function BasicTextFields({ label, funcion }) {
+export default function BasicTextFields({name, label, funcion, helperText }) {
   const classes = useStyles();
 
   return (
@@ -24,11 +24,12 @@ export default function BasicTextFields({ label, funcion }) {
       autoComplete="off"
     >
       <TextField id="outlined-basic"
-        name={label}
+        name={name}
         label={label}
         variant="filled"        
         className={classes.TextField}
         onBlur={funcion}
+        helperText={helperText}
       />
     </Box>
   );
