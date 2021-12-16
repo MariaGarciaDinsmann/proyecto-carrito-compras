@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import Form from './Form'
 
-export default function CartSummary(checkOut) {
+export default function CartSummary() {
 
     const { totalPrice } = useContext(CartContext)
 

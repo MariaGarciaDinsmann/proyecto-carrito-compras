@@ -36,8 +36,12 @@ export default function ItemList({ seccion, cardList }) {
                             </Typography>
                         </Card>
                         <Card sx={{ boxShadow: "none", textAlign: "right" }}>
-                            <img src={iconoHombre} alt="hombres" style={{ marginRight: "10px" }} />
-                            <img src={iconoMujer} alt="mujeres"  />
+                            <Link to="/categoria/zapatillas-hombre">
+                                <img src={iconoHombre} alt="hombres" style={{ marginRight: "10px" }} />
+                            </Link>
+                            <Link to="/categoria/zapatillas-mujer">
+                                <img src={iconoMujer} alt="mujeres" />
+                            </Link>
                         </Card>
                     </Box>
                     <Box className="cardListBox"

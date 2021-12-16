@@ -10,7 +10,7 @@ export default function ItemDetailContainer() {
 
     useEffect(() => {
         Services.getById(productID, setCardDetail);
-    }, []);
+    }, [productID]);
 
     return (
         <>

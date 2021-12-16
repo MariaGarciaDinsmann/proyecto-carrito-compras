@@ -29,24 +29,15 @@ function LeftMenu({ open, onOpen, onClose }) {
         },       
         {
             id: 2,
-            name: 'Zapatillas hombre',
+            name: 'Zapatillas',
             url: '/categoria/zapatillas-hombre',
-        },
+        },       
         {
             id: 3,
-            name: 'Zapatillas mujer',
-            url: '/categoria/zapatillas-mujer',
-        },
-        {
-            id: 4,
-            name: 'Indumentaria hombre',
+            name: 'Indumentaria',
             url: '/categoria/indumentaria-hombre',
         },
-        {
-            id: 5,
-            name: 'Indumentaria mujer',
-            url: '/categoria/indumentaria-mujer',
-        },
+       
     ]
     const [categories] = useState(categoriesObj);
 

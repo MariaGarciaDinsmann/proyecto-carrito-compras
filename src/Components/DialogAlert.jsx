@@ -18,7 +18,7 @@ export default function DialogAlert({ handleClose, open, mensaje }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    {"FELICITACIONES"}
+                    {"NOTIFICACIONES"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description" >
