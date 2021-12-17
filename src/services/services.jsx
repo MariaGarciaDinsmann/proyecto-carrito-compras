@@ -15,6 +15,26 @@ export default class Services {
     }
   };
 
+  static get itemsCollection() {
+    return collection(Services.db, "items");
+  }
+
+  static get db() {
+    return getFirestore();
+  }
+
+  static get basicQuery() {
+    return query(Services.itemsCollection, where("oferta", "==", true));
+  }
+
+  static categoryQuery = (category = "") => {
+    return query(Services.itemsCollection, where("oferta", "==", true), where("category", "==", category));
+  }
+
+  static subCategoryQuery = (category = "", subCategory = "") => {
+    return query(Services.itemsCollection, where("category", "==", category), where("subCategory", "==", subCategory))
+  }
+
   static inicializar = () => {
     initializeApp(Services.firebaseConfig);
   };
@@ -23,33 +43,22 @@ export default class Services {
   static getByType = async (setFunction, filters = []) => {
     setFunction([]);
 
-    const db = getFirestore();
 
-    const itemsCollection = collection(db, "items");
+    let filterQuery = {
+      0: Services.basicQuery,
+      1: Services.categoryQuery(filters[0]),
+      2: Services.subCategoryQuery(filters[0], filters[1])
+    };
 
-    let filterWhere;
-
-    switch (filters.length) {
-      case 0: filterWhere = (where("oferta", "==", true));
-        break;
-      case 1: filterWhere = (where("oferta", "==", true), where("category", "==", filters[0]));
-        break;
-      case 2: filterWhere = (where("category", "==", filters[0]), where("subCategory", "==", filters[1]));
-        break;
-    }
-
-    const filterQuerys = query(itemsCollection, filterWhere);
-
-    getDocs(filterQuerys).then((snapshot) => {
+    getDocs(filterQuery[filters.length]).then((snapshot) => {
       const tempList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setFunction(tempList);
     });
   }
 
   static getById = (id, setFunction) => {
-    const db = getFirestore();
-
-    const itemRef = doc(db, "items", id)
+    
+    const itemRef = doc(Services.db, "items", id)
     getDoc(itemRef).then((snapshot) => {
       if (snapshot.exists()) {
         setFunction({ ...snapshot.data(), id: snapshot.id });
@@ -58,8 +67,7 @@ export default class Services {
   }
 
   static updateItem = (id, newStock) => {
-    const db = getFirestore();
-    const orderRef = doc(db, "items", id);
+    const orderRef = doc(Services.db, "items", id);
     updateDoc(orderRef, { stock: newStock })
   }
 
@@ -67,8 +75,7 @@ export default class Services {
     const currentDate = new Date();
     const timestamp = currentDate.getTime();
     var date = new Date(timestamp);
-    const db = getFirestore();
-    const orderCollection = collection(db, "orders");
+    const orderCollection = collection(Services.db, "orders");
     const data = { ...order, date: date }
     return addDoc(orderCollection, data)
   }

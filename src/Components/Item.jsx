@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import imagenes from '../imagenes/imagenes'
 
-export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclaracion2 }) {
+export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclaracion2, oferta }) {
 
   return (
     <Card sx={{ maxWidth: 300, height: 380 }}>
@@ -15,11 +15,14 @@ export default function Item({ titulo, precio, alt, imagen, aclaracion1, aclarac
         alt={alt}
       />
       <CardContent>
-        <Typography variant="button" display="block" gutterBottom color="secondary" sx={{ background: '#e91e63', color: 'white', display:'inline-block', pl: 1, pr: 1, borderRadius: 1 }}>
+        <Typography variant="button" display="block" gutterBottom color="secondary" sx={{ background: '#e91e63', color: 'white', display: 'inline-block', pl: 1, pr: 1, borderRadius: 1 }}>
           {aclaracion2}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-        {`$${precio}`}
+          {`$${precio}`}
+          {
+            oferta? <Typography variant="overline" color="secondary" sx={{ paddingLeft: 1, verticalAlign: "middle"}}>OFERTA</Typography> : ""
+          }
         </Typography>
         <Typography variant="body2" sx={{
           minHeight: '40px',

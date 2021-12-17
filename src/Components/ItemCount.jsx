@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
 import Counter from './Counter';
+import { Typography } from '@mui/material';
 
 function ItemCount({ stock, initial, onAdd }) {
 
@@ -36,7 +37,8 @@ function ItemCount({ stock, initial, onAdd }) {
             </Box>
             <Box sx={{ mt: 1 }}>
                 <Button color="secondary" variant="contained" startIcon={<ShoppingCartIcon />} margin="dense" sx={{ pr: 2, width: '-webkit-fill-available' }} onClick={() => { handleAdd(true) }}>Agregar al carrito</Button>
-            </Box>           
+            </Box> 
+           <Typography>Stock disponible: {stock} </Typography>        
             <Box sx={{ mt: 4, mb: 4 }}>
                 <Link to="/cart">
                     <Button color="primary" variant="contained" margin="dense" onClick={() => { handleAdd(false) }} sx={{ pr: 2, width: '-webkit-fill-available', height: '50px' }}>Comprar ahora</Button>
