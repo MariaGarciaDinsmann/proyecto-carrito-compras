@@ -8,8 +8,17 @@ import { Fragment } from "react"
 import CircularProgress from '@mui/material/CircularProgress';
 import iconoHombre from '../imagenes/icono-hombre.png';
 import iconoMujer from '../imagenes/icono-mujer.png';
+import { useParams } from 'react-router-dom';
 
-export default function ItemList({ category, seccion, cardList }) {
+ 
+export default function ItemList({ cardList }) { 
+    
+    const capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      };
+    
+
+    const { categoryID, subCategoryID } = useParams();    
 
     if (cardList.length === 0)
         return (
@@ -30,18 +39,18 @@ export default function ItemList({ category, seccion, cardList }) {
                             width: "48%",
                         },
                     }}>
-                        <Card sx={{ boxShadow: "none" }}>
+                        <Card sx={{ boxShadow: "none" }}>                        
                             <Typography variant="h5" gutterBottom component="div" color="primary" mt={3}>
-                                {seccion}
+                                {capitalize(`${categoryID ? categoryID : 'Nuestras ofertas'} ${subCategoryID ? subCategoryID : ''}`)}
                             </Typography>
                         </Card>
                         {
-                            category?
+                            categoryID ?
                                 <Card sx={{ boxShadow: "none", textAlign: "right" }}>
-                                    <Link to={`/categoria/${category}/hombre`}>
+                                    <Link to={`/categoria/${categoryID}/hombre`}>
                                         <img src={iconoHombre} alt="hombres" style={{ marginRight: "10px" }} />
                                     </Link>
-                                    <Link to={`/categoria/${category}/mujer`}>
+                                    <Link to={`/categoria/${categoryID}/mujer`}>
                                         <img src={iconoMujer} alt="mujeres" />
                                     </Link>
                                 </Card>

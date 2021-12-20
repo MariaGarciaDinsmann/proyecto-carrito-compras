@@ -14,6 +14,8 @@ export default function Form() {
 
     const { productosAgregados, totalPrice, setOrderID, clear } = useContext(CartContext)
 
+    const [checkMail, setCheckMail] = useState(false);
+
     const [formValues, setFormValues] = useState({
         name: "",
         mail: "",
@@ -25,6 +27,10 @@ export default function Form() {
     const handleChange = (event) => {
         setFormValues({ ...formValues, [event.target.name]: event.target.value })
         console.log(formValues);
+    }
+
+    const handleCheck = (event) => {
+        setCheckMail(event.target.value === formValues.mail);
     }
 
     const validate = (object) => {
@@ -49,6 +55,9 @@ export default function Form() {
                 return e.context.key;
             })
         }
+        
+        if (!checkMail && !error)
+            return { errorKey: '0', menssage: 'chequeo mail' }
 
         return { errorKey, menssage };
     }
@@ -74,7 +83,7 @@ export default function Form() {
 
                 clear();
             });
-            
+
             navigate('/congrats', { replace: true })
 
         }
@@ -88,6 +97,7 @@ export default function Form() {
             <Typography>Para poder finalizar tu compra deberás completar el fomulario:</Typography>
             <BasicTextFields name={'name'} label={"Nombre y apellido"} funcion={handleChange} helperText={"Ejemplo: Juan Méndez"} />
             <BasicTextFields name={'mail'} label={"Mail"} funcion={handleChange} helperText={"Ejemplo: nombre@dominio.com"} />
+            <BasicTextFields name={'checkMail'} label={"Verifique su mail"} funcion={handleCheck} helperText={"Ejemplo: nombre@dominio.com"} />
             <BasicTextFields name={'phone'} label={"Teléfono"} funcion={handleChange} helperText={"Ejemplo: 1144446666"} />
             <Button variant="contained" color="secondary" onClick={checkOut} sx={{ pr: 2, width: '-webkit-fill-available', mt: 4 }}>
                 Finalizar mi compra

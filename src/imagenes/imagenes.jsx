@@ -18,6 +18,12 @@ import indumentariaMujer02 from '../imagenes/indumentaria-mujer-02.jpg';
 import indumentariaMujer03 from '../imagenes/indumentaria-mujer-03.jpg';
 import indumentariaMujer04 from '../imagenes/indumentaria-mujer-04.jpg';
 
+import accesoriosHombre01 from '../imagenes/accesorios-hombre-01.jpg';
+import accesoriosHombre02 from '../imagenes/accesorios-hombre-02.jpg';
+
+import accesoriosMujer01 from '../imagenes/accesorios-mujer-01.jpg';
+import accesoriosMujer02 from '../imagenes/accesorios-mujer-02.jpg';
+
 import publicidad01 from '../imagenes/publicidad-01.png';
 
 import bannerSlider01 from '../imagenes/banner-slider-01.jpg';
@@ -43,6 +49,12 @@ const imagenes = {
     indumentariaMujer02,
     indumentariaMujer03,
     indumentariaMujer04,
+
+    accesoriosHombre01,
+    accesoriosHombre02,
+
+    accesoriosMujer01,
+    accesoriosMujer02,
 
     publicidad01,
 };

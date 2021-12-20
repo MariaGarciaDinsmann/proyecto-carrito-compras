@@ -38,8 +38,8 @@ function ItemCount({ stock, initial, onAdd }) {
             <Box sx={{ mt: 1 }}>
                 <Button color="secondary" variant="contained" startIcon={<ShoppingCartIcon />} margin="dense" sx={{ pr: 2, width: '-webkit-fill-available' }} onClick={() => { handleAdd(true) }}>Agregar al carrito</Button>
             </Box> 
-           <Typography>Stock disponible: {stock} </Typography>        
-            <Box sx={{ mt: 4, mb: 4 }}>
+           <Typography variant="overline" color="primary">(Stock disponible: {stock})</Typography>        
+            <Box sx={{ mt: 2, mb: 4 }}>
                 <Link to="/cart">
                     <Button color="primary" variant="contained" margin="dense" onClick={() => { handleAdd(false) }} sx={{ pr: 2, width: '-webkit-fill-available', height: '50px' }}>Comprar ahora</Button>
                 </Link>

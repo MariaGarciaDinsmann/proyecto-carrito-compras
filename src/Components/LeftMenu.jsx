@@ -37,6 +37,11 @@ function LeftMenu({ open, onOpen, onClose }) {
             name: 'Indumentaria',
             url: '/categoria/indumentaria',
         },
+        {
+            id: 4,
+            name: 'Accesorios',
+            url: '/categoria/accesorios',
+        },
        
     ]
     const [categories] = useState(categoriesObj);
