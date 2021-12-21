@@ -57,11 +57,16 @@ export default class Services {
   }
 
   static getById = (id, setFunction) => {
-    
+
     const itemRef = doc(Services.db, "items", id)
     getDoc(itemRef).then((snapshot) => {
       if (snapshot.exists()) {
         setFunction({ ...snapshot.data(), id: snapshot.id });
+      }
+      else
+      {
+        setFunction({error: 'producto no encontrado', id});
+        console.log('no encontro')
       }
     });
   }

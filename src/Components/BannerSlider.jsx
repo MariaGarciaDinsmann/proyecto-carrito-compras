@@ -32,8 +32,8 @@ export default function BannerSlider () {
       }}
       className={classes.carousel}
     >
-      {bannerData.map((item) => (
-        <img src={item} alt="" className={classes.image} />
+      {bannerData.map((item, i) => (
+        <img src={item} alt="" className={classes.image} key={i} />
       ))}
     </Carousel>
   );
