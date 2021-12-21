@@ -7,8 +7,8 @@ import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Counter from './Counter'
-import imagenes from '../imagenes/imagenes'
+import Counter from './Counter';
+import imagenes from '../imagenes/imagenes';
 import { CartContext } from '../contexts/CartContext';
 
 const Img = styled('img')({

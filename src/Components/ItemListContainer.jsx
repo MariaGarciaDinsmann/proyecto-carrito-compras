@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import ItemList from './ItemList';
 import BannerSlider from './BannerSlider';
-import Services from '../services/services'
+import Services from '../services/services';
 
 export default function ItemListContainer({ greeting }) {
 

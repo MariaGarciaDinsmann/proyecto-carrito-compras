@@ -1,10 +1,10 @@
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card'
+import Card from '@mui/material/Card';
 import Item from './Item';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-import { Fragment } from "react"
+import { Fragment } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import iconoHombre from '../imagenes/icono-hombre.png';
 import iconoMujer from '../imagenes/icono-mujer.png';

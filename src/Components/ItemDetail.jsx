@@ -1,18 +1,18 @@
 import * as React from 'react';
-import Container from '@mui/material/Container'
-import Box from '@mui/material/Box'
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useState, useContext } from 'react';
 import Typography from '@mui/material/Typography';
-import imagenes from '../imagenes/imagenes'
+import imagenes from '../imagenes/imagenes';
 import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import ItemCount from './ItemCount';
 import { CartContext } from '../contexts/CartContext';
-import DialogAlert from './DialogAlert'
+import DialogAlert from './DialogAlert';
 
 
 export default function ItemDetail({ cardDetail }) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import services from './services/services'
+import services from './services/services';
 
 
 services.inicializar();

@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import Form from './Form'
+import Form from './Form';
 
 export default function CartSummary() {
 

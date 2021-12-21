@@ -4,7 +4,7 @@ import BasicTextFields from './BasicTextFields';
 import Button from '@mui/material/Button';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import Services from '../services/services'
+import Services from '../services/services';
 import { Typography } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import Joi from 'joi';

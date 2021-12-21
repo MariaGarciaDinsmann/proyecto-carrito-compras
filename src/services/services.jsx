@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, doc, getDoc, getFirestore, updateDoc, addDoc, query, where } from "firebase/firestore"
+import { collection, getDocs, doc, getDoc, getFirestore, updateDoc, addDoc, query, where } from "firebase/firestore";
 
 
 export default class Services {
